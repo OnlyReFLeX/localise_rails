@@ -1,8 +1,6 @@
 # LocaliseRails
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/localise_rails`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Easy localise for your Rails app from localise.biz (I18n)
 
 ## Installation
 
@@ -22,17 +20,40 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+```ruby
+# config/initializers/localise_rails.rb
+LocaliseRails.configure do |config|
+  config.api_key = "LOCALISE_KEY"
 
-## Development
+  ### all options https://localise.biz/api/docs/export/exportall
+  config.options = {
+    filter: 'backend',
+    fallback: 'en-US'
+  }
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake ` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+  config.rename_locales = {
+    'en-US' => 'en'
+  }
+  
+  ### all options https://github.com/redis/redis-rb
+  # config.redis_options = {
+  #   host: "127.0.0.1", 
+  #   port: 6379, 
+  #   db: 1,
+  #   url: "redis://:p4ssw0rd@127.0.0.1:6379/1"
+  # }
+end
+```
+### How to update locales
+To crontab
+```ruby
+LocaliseRails.update
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/localise_rails.
+Bug reports and pull requests are welcome on GitHub at https://github.com/OnlyReFLeX/localise_rails.
 
 ## License
 
