@@ -25,7 +25,7 @@ module LocaliseRails
 
     def prepare_locales(locales)
       LocaliseRails.config.rename_locales.each do |old_key, new_key|
-        locales[new_key] = locales.delete old_key
+        locales[new_key] = locales.delete old_key if locales[old_key]
       end
       locales
     end

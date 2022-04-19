@@ -37,6 +37,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
 
   spec.add_dependency 'activerecord'
+  spec.add_dependency 'i18n', '>= 1.9.0'
   spec.add_dependency 'activesupport'
   spec.add_dependency 'httparty'
   spec.add_dependency 'railties'
