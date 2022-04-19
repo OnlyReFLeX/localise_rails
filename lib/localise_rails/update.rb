@@ -11,8 +11,8 @@ module LocaliseRails
 
         if response.success?
           LocaliseRails.logger.info('Localise: locales got successfully')
-          LocaliseRails.config.redis.set(LocaliseRails::UPDATED_AT_CACHE_KEY, Time.current.to_i)
           LocaliseRails.config.redis.set(LocaliseRails::DATA_CACHE_KEY, response.body)
+          LocaliseRails.config.redis.set(LocaliseRails::UPDATED_AT_CACHE_KEY, Time.current.to_i)
         else
           LocaliseRails.logger.error "Something went wrong downloading translations: #{response.parsed_response}"
         end
