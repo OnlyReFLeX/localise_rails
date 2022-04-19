@@ -1,3 +1,4 @@
+# requires
 require 'localise_rails/version'
 require 'localise_rails/logger'
 require 'localise_rails/config'
@@ -5,6 +6,10 @@ require 'localise_rails/update'
 require 'localise_rails/seed_translations_to_request_store'
 require 'localise_rails/request_store_translations'
 require 'localise_rails/fetch_localise_cache'
+
+# gems
+require 'redis'
+require 'request_store'
 
 module LocaliseRails
   extend ActiveSupport::Autoload
@@ -25,7 +30,7 @@ module LocaliseRails
   # All available options and their defaults are in the example below:
   # @example Initializer for Rails
   # LocaliseRails.configure do |config|
-  #   config.api_key = 'LOCALISE_KEY"
+  #   config.api_key = "LOCALISE_KEY"
   #
   #   # all options https://localise.biz/api/docs/export/exportall
   #   config.options = {
@@ -47,6 +52,7 @@ module LocaliseRails
   # end
   def self.configure
     yield(config) if block_given?
+    config.redis = Redis.new(config.redis_options)
   end
 end
 
