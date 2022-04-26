@@ -27,14 +27,18 @@ LocaliseRails.configure do |config|
   config.api_key = "LOCALISE_KEY"
 
   ### all options https://localise.biz/api/docs/export/exportall
-  config.options = {
-    filter: 'backend',
-    fallback: 'en-US'
-  }
+  # config.options = {
+  #   filter: 'backend',
+  #   fallback: 'en-US'
+  # }
 
-  config.rename_locales = {
-    'en-US' => 'en'
-  }
+  ### rename locales from localise
+  # config.rename_locales = {
+  #   'en-US' => 'en'
+  # }
+  
+  ### set prefix for locales
+  # config.prefix = 'localise'
   
   ### all options https://github.com/redis/redis-rb
   # config.redis_options = {

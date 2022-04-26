@@ -24,9 +24,18 @@ module LocaliseRails
     end
 
     def prepare_locales(locales)
+      # Rename locales
       LocaliseRails.config.rename_locales.each do |old_key, new_key|
         locales[new_key] = locales.delete old_key if locales[old_key]
       end
+
+      # Set prefix
+      if LocaliseRails.config.prefix
+        locales.each do |lang, translations|
+          locales[lang] = { LocaliseRails.config.prefix => translations }
+        end
+      end
+
       locales
     end
 

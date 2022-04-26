@@ -42,6 +42,10 @@ module LocaliseRails
   #     'en-US' => 'en'
   #   }
   #
+  #
+  #   # set prefix for locales
+  #   # config.prefix = 'localise'
+  #
   #   # all options https://github.com/redis/redis-rb
   #   # config.redis_options = {
   #   #   host: "127.0.0.1",
